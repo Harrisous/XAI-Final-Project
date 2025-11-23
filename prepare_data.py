@@ -1,3 +1,4 @@
+# code last modified using gemini 3 pro 11/22/2025 18:19
 import os
 import warnings
 import sys
@@ -12,7 +13,7 @@ from sklearn.decomposition import PCA
 import joblib
 from tqdm import tqdm
 
-# --- 1. 配置 & 抑制警告 ---
+# configuration
 warnings.filterwarnings("ignore")
 os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" 
 hf_logging.set_verbosity_error()
@@ -21,19 +22,18 @@ MODEL_ID = "ehcalabres/wav2vec2-lg-xlsr-en-speech-emotion-recognition"
 DATASET_ID = "renumics/emodb"
 TARGET_SAMPLING_RATE = 16000 
 
-# ✅ 增强配置：生成多少个变体？
-# 原始数据(1) + 变体(2) = 3倍密度 (约1600个点)
+# Original data (1) + variants (2) = 3x density (about 1600 points)
 AUGMENTATION_FACTOR = 2 
 
 def add_noise(audio_array, noise_level=0.005):
-    """添加轻微白噪音"""
+    """Add slight white noise"""
     noise = np.random.randn(len(audio_array))
     augmented = audio_array + noise_level * noise
     return augmented.astype(np.float32)
 
 def shift_pitch(audio_array, sr, steps=0.5):
-    """轻微改变音调 (比较慢，可选)"""
-    # 为了速度，这里我们主要用 Noise，如果你算力够强可以取消下面注释
+    """Slightly shift pitch (slower, optional)"""
+    # For speed, we mainly use Noise here. If you have strong computing power, you can uncomment the following line
     # return librosa.effects.pitch_shift(audio_array, sr=sr, n_steps=steps)
     return audio_array
 
@@ -54,7 +54,7 @@ def main():
     embeddings = []
     labels = [] 
     
-    # EmoDB 标签映射
+    # EmoDB label mapping
     label_mapping = {
         'w': 'anger', 'aerger': 'anger', 'anger': 'anger',
         'l': 'boredom', 'langeweile': 'boredom', 'boredom': 'boredom',

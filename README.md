@@ -1,4 +1,5 @@
 # Dual-Stream Emotion XAI
+Haochen Li
 
 Dual-Stream Emotion XAI is an interactive visualization project that compares two complementary channels of human communication:
 
