@@ -1,5 +1,9 @@
-# Dual-Stream Emotion XAI
-Haochen Li
+# AIPI590 Final Project: Dual-Stream Emotion XAI
+## Haochen Li, 2025 Nov
+
+Pitch deck: https://gamma.app/docs/Decoding-Human-Emotion-In-Embedding-Space-be6glqm4xxexuym
+
+Streamlit deployment: https://dual-stream-emotional-xai.streamlit.app/
 
 Dual-Stream Emotion XAI is an interactive visualization project that compares two complementary channels of human communication:
 
